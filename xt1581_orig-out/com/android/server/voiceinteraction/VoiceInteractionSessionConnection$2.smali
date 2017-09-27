@@ -1,0 +1,73 @@
+.class Lcom/android/server/voiceinteraction/VoiceInteractionSessionConnection$2;
+.super Ljava/lang/Object;
+.source "VoiceInteractionSessionConnection.java"
+
+# interfaces
+.implements Landroid/content/ServiceConnection;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/android/server/voiceinteraction/VoiceInteractionSessionConnection;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
+# instance fields
+.field final synthetic this$0:Lcom/android/server/voiceinteraction/VoiceInteractionSessionConnection;
+
+
+# direct methods
+.method constructor <init>(Lcom/android/server/voiceinteraction/VoiceInteractionSessionConnection;)V
+    .registers 2
+    .param p1, "this$0"    # Lcom/android/server/voiceinteraction/VoiceInteractionSessionConnection;
+
+    .prologue
+    .line 136
+    iput-object p1, p0, Lcom/android/server/voiceinteraction/VoiceInteractionSessionConnection$2;->this$0:Lcom/android/server/voiceinteraction/VoiceInteractionSessionConnection;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public onServiceConnected(Landroid/content/ComponentName;Landroid/os/IBinder;)V
+    .registers 5
+    .param p1, "name"    # Landroid/content/ComponentName;
+    .param p2, "service"    # Landroid/os/IBinder;
+
+    .prologue
+    .line 140
+    iget-object v0, p0, Lcom/android/server/voiceinteraction/VoiceInteractionSessionConnection$2;->this$0:Lcom/android/server/voiceinteraction/VoiceInteractionSessionConnection;
+
+    invoke-static {p2}, Landroid/service/voice/IVoiceInteractionSessionService$Stub;->asInterface(Landroid/os/IBinder;)Landroid/service/voice/IVoiceInteractionSessionService;
+
+    move-result-object v1
+
+    iput-object v1, v0, Lcom/android/server/voiceinteraction/VoiceInteractionSessionConnection;->mFullService:Landroid/service/voice/IVoiceInteractionSessionService;
+
+    .line 139
+    return-void
+.end method
+
+.method public onServiceDisconnected(Landroid/content/ComponentName;)V
+    .registers 4
+    .param p1, "name"    # Landroid/content/ComponentName;
+
+    .prologue
+    .line 144
+    iget-object v0, p0, Lcom/android/server/voiceinteraction/VoiceInteractionSessionConnection$2;->this$0:Lcom/android/server/voiceinteraction/VoiceInteractionSessionConnection;
+
+    const/4 v1, 0x0
+
+    iput-object v1, v0, Lcom/android/server/voiceinteraction/VoiceInteractionSessionConnection;->mFullService:Landroid/service/voice/IVoiceInteractionSessionService;
+
+    .line 143
+    return-void
+.end method
