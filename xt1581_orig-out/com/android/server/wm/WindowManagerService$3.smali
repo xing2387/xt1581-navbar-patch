@@ -42,7 +42,7 @@
     .param p6, "val$onlyCore"    # Z
 
     .prologue
-    .line 939
+    .line 942
     iput-object p1, p0, Lcom/android/server/wm/WindowManagerService$3;->val$holder:[Lcom/android/server/wm/WindowManagerService;
 
     iput-object p2, p0, Lcom/android/server/wm/WindowManagerService$3;->val$context:Landroid/content/Context;
@@ -66,7 +66,7 @@
     .registers 9
 
     .prologue
-    .line 942
+    .line 945
     iget-object v7, p0, Lcom/android/server/wm/WindowManagerService$3;->val$holder:[Lcom/android/server/wm/WindowManagerService;
 
     new-instance v0, Lcom/android/server/wm/WindowManagerService;
@@ -75,14 +75,14 @@
 
     iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$3;->val$im:Lcom/android/server/input/InputManagerService;
 
-    .line 943
+    .line 946
     iget-boolean v3, p0, Lcom/android/server/wm/WindowManagerService$3;->val$haveInputMethods:Z
 
     iget-boolean v4, p0, Lcom/android/server/wm/WindowManagerService$3;->val$showBootMsgs:Z
 
     iget-boolean v5, p0, Lcom/android/server/wm/WindowManagerService$3;->val$onlyCore:Z
 
-    .line 942
+    .line 945
     const/4 v6, 0x0
 
     invoke-direct/range {v0 .. v6}, Lcom/android/server/wm/WindowManagerService;-><init>(Landroid/content/Context;Lcom/android/server/input/InputManagerService;ZZZLcom/android/server/wm/WindowManagerService;)V
@@ -91,6 +91,6 @@
 
     aput-object v0, v7, v1
 
-    .line 941
+    .line 944
     return-void
 .end method

@@ -1851,7 +1851,7 @@
 
     .line 445
     :cond_a
-    const/high16 v1, 0x7fc00000    # NaNf
+    const/high16 v1, 0x7fc00000    # Float.NaN
 
     move-object v0, p0
 

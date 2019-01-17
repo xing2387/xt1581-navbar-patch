@@ -6621,6 +6621,7 @@
     :try_end_4b
     .catch Ljava/lang/NumberFormatException; {:try_start_48 .. :try_end_4b} :catch_55
     .catch Ljava/lang/NullPointerException; {:try_start_48 .. :try_end_4b} :catch_154
+    .catch Ljava/lang/NumberFormatException; {:try_start_48 .. :try_end_4b} :catch_154
     .catch Lorg/xmlpull/v1/XmlPullParserException; {:try_start_48 .. :try_end_4b} :catch_154
     .catch Ljava/io/IOException; {:try_start_48 .. :try_end_4b} :catch_154
     .catch Ljava/lang/IndexOutOfBoundsException; {:try_start_48 .. :try_end_4b} :catch_154

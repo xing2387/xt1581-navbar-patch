@@ -30,18 +30,18 @@
     .param p3, "looper"    # Landroid/os/Looper;
 
     .prologue
-    .line 780
+    .line 783
     iput-object p1, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->this$0:Lcom/android/server/wm/WindowManagerService;
 
-    .line 781
+    .line 784
     invoke-direct {p0, p2, p3}, Landroid/view/InputEventReceiver;-><init>(Landroid/view/InputChannel;Landroid/os/Looper;)V
 
-    .line 778
+    .line 781
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->mIsStartEvent:Z
 
-    .line 780
+    .line 783
     return-void
 .end method
 
@@ -52,17 +52,17 @@
     .param p1, "event"    # Landroid/view/InputEvent;
 
     .prologue
-    .line 786
+    .line 789
     const/4 v3, 0x0
 
-    .line 788
+    .line 791
     .local v3, "handled":Z
     :try_start_1
     instance-of v8, p1, Landroid/view/MotionEvent;
 
     if-eqz v8, :cond_52
 
-    .line 789
+    .line 792
     invoke-virtual {p1}, Landroid/view/InputEvent;->getSource()I
 
     move-result v8
@@ -71,37 +71,37 @@
 
     if-eqz v8, :cond_52
 
-    .line 790
+    .line 793
     iget-object v8, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->this$0:Lcom/android/server/wm/WindowManagerService;
 
     iget-object v8, v8, Lcom/android/server/wm/WindowManagerService;->mDragState:Lcom/android/server/wm/DragState;
 
     if-eqz v8, :cond_52
 
-    .line 791
+    .line 794
     move-object v0, p1
 
     check-cast v0, Landroid/view/MotionEvent;
 
     move-object v5, v0
 
-    .line 792
+    .line 795
     .local v5, "motionEvent":Landroid/view/MotionEvent;
     const/4 v2, 0x0
 
-    .line 793
+    .line 796
     .local v2, "endDrag":Z
     invoke-virtual {v5}, Landroid/view/MotionEvent;->getRawX()F
 
     move-result v6
 
-    .line 794
+    .line 797
     .local v6, "newX":F
     invoke-virtual {v5}, Landroid/view/MotionEvent;->getRawY()F
 
     move-result v7
 
-    .line 796
+    .line 799
     .local v7, "newY":F
     invoke-virtual {v5}, Landroid/view/MotionEvent;->getButtonState()I
 
@@ -113,28 +113,28 @@
 
     const/4 v4, 0x1
 
-    .line 798
+    .line 801
     .local v4, "isStylusButtonDown":Z
     :goto_29
     iget-boolean v8, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->mIsStartEvent:Z
 
     if-eqz v8, :cond_35
 
-    .line 799
+    .line 802
     if-eqz v4, :cond_32
 
-    .line 802
+    .line 805
     const/4 v8, 0x1
 
     iput-boolean v8, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->mStylusButtonDownAtStart:Z
 
-    .line 804
+    .line 807
     :cond_32
     const/4 v8, 0x0
 
     iput-boolean v8, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->mIsStartEvent:Z
 
-    .line 807
+    .line 810
     :cond_35
     invoke-virtual {v5}, Landroid/view/MotionEvent;->getAction()I
 
@@ -142,13 +142,13 @@
 
     packed-switch v8, :pswitch_data_ac
 
-    .line 843
+    .line 846
     .end local v2    # "endDrag":Z
     :goto_3c
     :pswitch_3c
     if-eqz v2, :cond_51
 
-    .line 846
+    .line 849
     iget-object v8, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->this$0:Lcom/android/server/wm/WindowManagerService;
 
     iget-object v9, v8, Lcom/android/server/wm/WindowManagerService;->mWindowMap:Ljava/util/HashMap;
@@ -158,7 +158,7 @@
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_43} :catch_6c
     .catchall {:try_start_1 .. :try_end_43} :catchall_89
 
-    .line 847
+    .line 850
     :try_start_43
     iget-object v8, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->this$0:Lcom/android/server/wm/WindowManagerService;
 
@@ -171,12 +171,12 @@
     :try_start_4a
     monitor-exit v9
 
-    .line 849
+    .line 852
     const/4 v8, 0x0
 
     iput-boolean v8, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->mStylusButtonDownAtStart:Z
 
-    .line 850
+    .line 853
     const/4 v8, 0x1
 
     iput-boolean v8, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->mIsStartEvent:Z
@@ -184,11 +184,11 @@
     .catch Ljava/lang/Exception; {:try_start_4a .. :try_end_51} :catch_6c
     .catchall {:try_start_4a .. :try_end_51} :catchall_89
 
-    .line 853
+    .line 856
     :cond_51
     const/4 v3, 0x1
 
-    .line 858
+    .line 861
     .end local v4    # "isStylusButtonDown":Z
     .end local v5    # "motionEvent":Landroid/view/MotionEvent;
     .end local v6    # "newX":F
@@ -196,11 +196,11 @@
     :cond_52
     invoke-virtual {p0, p1, v3}, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->finishInputEvent(Landroid/view/InputEvent;Z)V
 
-    .line 785
+    .line 788
     :goto_55
     return-void
 
-    .line 796
+    .line 799
     .restart local v2    # "endDrag":Z
     .restart local v5    # "motionEvent":Landroid/view/MotionEvent;
     .restart local v6    # "newX":F
@@ -211,7 +211,7 @@
     .restart local v4    # "isStylusButtonDown":Z
     goto :goto_29
 
-    .line 815
+    .line 818
     :pswitch_58
     :try_start_58
     iget-boolean v8, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->mStylusButtonDownAtStart:Z
@@ -220,7 +220,7 @@
 
     if-eqz v4, :cond_7a
 
-    .line 822
+    .line 825
     :cond_5e
     iget-object v8, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->this$0:Lcom/android/server/wm/WindowManagerService;
 
@@ -231,7 +231,7 @@
     .catch Ljava/lang/Exception; {:try_start_58 .. :try_end_63} :catch_6c
     .catchall {:try_start_58 .. :try_end_63} :catchall_89
 
-    .line 824
+    .line 827
     :try_start_63
     iget-object v8, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->this$0:Lcom/android/server/wm/WindowManagerService;
 
@@ -249,7 +249,7 @@
 
     goto :goto_3c
 
-    .line 855
+    .line 858
     .end local v2    # "endDrag":Z
     .end local v4    # "isStylusButtonDown":Z
     .end local v5    # "motionEvent":Landroid/view/MotionEvent;
@@ -258,7 +258,7 @@
     :catch_6c
     move-exception v1
 
-    .line 856
+    .line 859
     .local v1, "e":Ljava/lang/Exception;
     :try_start_6d
     const-string/jumbo v8, "WindowManager"
@@ -269,12 +269,12 @@
     :try_end_76
     .catchall {:try_start_6d .. :try_end_76} :catchall_89
 
-    .line 858
+    .line 861
     invoke-virtual {p0, p1, v3}, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->finishInputEvent(Landroid/view/InputEvent;Z)V
 
     goto :goto_55
 
-    .line 818
+    .line 821
     .end local v1    # "e":Ljava/lang/Exception;
     .restart local v2    # "endDrag":Z
     .restart local v4    # "isStylusButtonDown":Z
@@ -292,7 +292,7 @@
     .catch Ljava/lang/Exception; {:try_start_7a .. :try_end_7f} :catch_6c
     .catchall {:try_start_7a .. :try_end_7f} :catchall_89
 
-    .line 819
+    .line 822
     :try_start_7f
     iget-object v8, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->this$0:Lcom/android/server/wm/WindowManagerService;
 
@@ -313,7 +313,7 @@
 
     goto :goto_3c
 
-    .line 857
+    .line 860
     .end local v2    # "endDrag":Z
     .end local v4    # "isStylusButtonDown":Z
     .end local v5    # "motionEvent":Landroid/view/MotionEvent;
@@ -322,13 +322,13 @@
     :catchall_89
     move-exception v8
 
-    .line 858
+    .line 861
     invoke-virtual {p0, p1, v3}, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->finishInputEvent(Landroid/view/InputEvent;Z)V
 
-    .line 857
+    .line 860
     throw v8
 
-    .line 818
+    .line 821
     .local v2, "endDrag":Z
     .restart local v4    # "isStylusButtonDown":Z
     .restart local v5    # "motionEvent":Landroid/view/MotionEvent;
@@ -342,7 +342,7 @@
 
     throw v8
 
-    .line 822
+    .line 825
     :catchall_91
     move-exception v8
 
@@ -350,7 +350,7 @@
 
     throw v8
 
-    .line 832
+    .line 835
     :pswitch_94
     iget-object v8, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->this$0:Lcom/android/server/wm/WindowManagerService;
 
@@ -361,7 +361,7 @@
     .catch Ljava/lang/Exception; {:try_start_8f .. :try_end_99} :catch_6c
     .catchall {:try_start_8f .. :try_end_99} :catchall_89
 
-    .line 833
+    .line 836
     :try_start_99
     iget-object v8, p0, Lcom/android/server/wm/WindowManagerService$DragInputEventReceiver;->this$0:Lcom/android/server/wm/WindowManagerService;
 
@@ -379,7 +379,7 @@
 
     goto :goto_3c
 
-    .line 832
+    .line 835
     .local v2, "endDrag":Z
     :catchall_a3
     move-exception v8
@@ -388,13 +388,13 @@
 
     throw v8
 
-    .line 839
+    .line 842
     :pswitch_a6
     const/4 v2, 0x1
 
     goto :goto_3c
 
-    .line 846
+    .line 849
     .end local v2    # "endDrag":Z
     :catchall_a8
     move-exception v8
@@ -406,7 +406,7 @@
     .catch Ljava/lang/Exception; {:try_start_a1 .. :try_end_ab} :catch_6c
     .catchall {:try_start_a1 .. :try_end_ab} :catchall_89
 
-    .line 807
+    .line 810
     nop
 
     :pswitch_data_ac

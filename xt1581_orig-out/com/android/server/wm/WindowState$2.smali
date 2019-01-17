@@ -51,7 +51,7 @@
     .param p9, "val$newConfig"    # Landroid/content/res/Configuration;
 
     .prologue
-    .line 2398
+    .line 2425
     iput-object p1, p0, Lcom/android/server/wm/WindowState$2;->this$0:Lcom/android/server/wm/WindowState;
 
     iput-object p2, p0, Lcom/android/server/wm/WindowState$2;->val$frame:Landroid/graphics/Rect;
@@ -81,7 +81,7 @@
     .registers 11
 
     .prologue
-    .line 2402
+    .line 2429
     :try_start_0
     iget-object v0, p0, Lcom/android/server/wm/WindowState$2;->this$0:Lcom/android/server/wm/WindowState;
 
@@ -93,7 +93,7 @@
 
     iget-object v4, p0, Lcom/android/server/wm/WindowState$2;->val$visibleInsets:Landroid/graphics/Rect;
 
-    .line 2403
+    .line 2430
     iget-object v5, p0, Lcom/android/server/wm/WindowState$2;->val$stableInsets:Landroid/graphics/Rect;
 
     iget-object v6, p0, Lcom/android/server/wm/WindowState$2;->val$outsets:Landroid/graphics/Rect;
@@ -102,16 +102,16 @@
 
     iget-object v8, p0, Lcom/android/server/wm/WindowState$2;->val$newConfig:Landroid/content/res/Configuration;
 
-    .line 2402
+    .line 2429
     invoke-static/range {v0 .. v8}, Lcom/android/server/wm/WindowState;->-wrap0(Lcom/android/server/wm/WindowState;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Rect;ZLandroid/content/res/Configuration;)V
     :try_end_15
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_15} :catch_16
 
-    .line 2400
+    .line 2427
     :goto_15
     return-void
 
-    .line 2404
+    .line 2431
     :catch_16
     move-exception v9
 

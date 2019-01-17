@@ -39,7 +39,7 @@
     .param p5, "val$animationDuration"    # I
 
     .prologue
-    .line 11080
+    .line 11087
     iput-object p1, p0, Lcom/android/server/wm/WindowManagerService$10;->this$0:Lcom/android/server/wm/WindowManagerService;
 
     iput-object p2, p0, Lcom/android/server/wm/WindowManagerService$10;->val$stack:Lcom/android/server/wm/TaskStack;
@@ -61,14 +61,14 @@
     .registers 6
 
     .prologue
-    .line 11083
+    .line 11090
     iget-object v0, p0, Lcom/android/server/wm/WindowManagerService$10;->this$0:Lcom/android/server/wm/WindowManagerService;
 
     invoke-static {v0}, Lcom/android/server/wm/WindowManagerService;->-get0(Lcom/android/server/wm/WindowManagerService;)Lcom/android/server/wm/BoundsAnimationController;
 
     move-result-object v0
 
-    .line 11084
+    .line 11091
     iget-object v1, p0, Lcom/android/server/wm/WindowManagerService$10;->val$stack:Lcom/android/server/wm/TaskStack;
 
     iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$10;->val$originalBounds:Landroid/graphics/Rect;
@@ -77,9 +77,9 @@
 
     iget v4, p0, Lcom/android/server/wm/WindowManagerService$10;->val$animationDuration:I
 
-    .line 11083
+    .line 11090
     invoke-virtual {v0, v1, v2, v3, v4}, Lcom/android/server/wm/BoundsAnimationController;->animateBounds(Lcom/android/server/wm/BoundsAnimationController$AnimateBoundsUser;Landroid/graphics/Rect;Landroid/graphics/Rect;I)V
 
-    .line 11082
+    .line 11089
     return-void
 .end method

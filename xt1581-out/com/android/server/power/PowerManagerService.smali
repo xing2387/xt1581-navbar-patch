@@ -1045,7 +1045,7 @@
     .prologue
     const-wide/16 v4, -0x1
 
-    const/high16 v2, 0x7fc00000    # NaNf
+    const/high16 v2, 0x7fc00000    # Float.NaN
 
     const/4 v1, -0x1
 
@@ -10053,7 +10053,7 @@
     if-eqz v6, :cond_b1
 
     .line 813
-    const/high16 v6, 0x7fc00000    # NaNf
+    const/high16 v6, 0x7fc00000    # Float.NaN
 
     iput v6, p0, Lcom/android/server/power/PowerManagerService;->mTemporaryScreenAutoBrightnessAdjustmentSettingOverride:F
 

@@ -1572,7 +1572,7 @@
 
     iget-boolean v7, p0, Lcom/android/server/usb/UsbDeviceManager;->mAdbEnabled:Z
 
-    #if-eqz v7, :cond_3a
+    if-eqz v7, :cond_3a
 
     const/4 v5, 0x1
 

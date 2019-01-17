@@ -164,7 +164,7 @@
     iput v1, p0, Lcom/android/server/wm/WindowSurfacePlacer;->mButtonBrightness:F
 
     .line 115
-    const/high16 v0, 0x7fc00000    # NaNf
+    const/high16 v0, 0x7fc00000    # Float.NaN
 
     iput v0, p0, Lcom/android/server/wm/WindowSurfacePlacer;->mAutoBrightnessAdjustment:F
 
@@ -4190,7 +4190,7 @@
     iput v0, v1, Lcom/android/server/wm/WindowSurfacePlacer;->mButtonBrightness:F
 
     .line 306
-    const/high16 v27, 0x7fc00000    # NaNf
+    const/high16 v27, 0x7fc00000    # Float.NaN
 
     move/from16 v0, v27
 
@@ -5476,7 +5476,7 @@
     move-object/from16 v27, v0
 
     .line 508
-    const/high16 v28, 0x7fc00000    # NaNf
+    const/high16 v28, 0x7fc00000    # Float.NaN
 
     .line 507
     invoke-virtual/range {v27 .. v28}, Landroid/os/PowerManagerInternal;->setAutoBrightnessAdjustmentOverrideFromWindowManager(F)V

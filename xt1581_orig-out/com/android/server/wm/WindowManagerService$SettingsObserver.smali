@@ -36,85 +36,85 @@
 
     const/4 v2, -0x1
 
-    .line 678
+    .line 681
     iput-object p1, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->this$0:Lcom/android/server/wm/WindowManagerService;
 
-    .line 679
+    .line 682
     new-instance v1, Landroid/os/Handler;
 
     invoke-direct {v1}, Landroid/os/Handler;-><init>()V
 
     invoke-direct {p0, v1}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
 
-    .line 670
+    .line 673
     const-string/jumbo v1, "accessibility_display_inversion_enabled"
 
     invoke-static {v1}, Landroid/provider/Settings$Secure;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v1
 
-    .line 669
+    .line 672
     iput-object v1, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->mDisplayInversionEnabledUri:Landroid/net/Uri;
 
-    .line 672
+    .line 675
     const-string/jumbo v1, "window_animation_scale"
 
     invoke-static {v1}, Landroid/provider/Settings$Global;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v1
 
-    .line 671
+    .line 674
     iput-object v1, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->mWindowAnimationScaleUri:Landroid/net/Uri;
 
-    .line 674
+    .line 677
     const-string/jumbo v1, "transition_animation_scale"
 
     invoke-static {v1}, Landroid/provider/Settings$Global;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v1
 
-    .line 673
+    .line 676
     iput-object v1, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->mTransitionAnimationScaleUri:Landroid/net/Uri;
 
-    .line 676
+    .line 679
     const-string/jumbo v1, "animator_duration_scale"
 
     invoke-static {v1}, Landroid/provider/Settings$Global;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v1
 
-    .line 675
+    .line 678
     iput-object v1, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->mAnimationDurationScaleUri:Landroid/net/Uri;
 
-    .line 680
+    .line 683
     iget-object v1, p1, Lcom/android/server/wm/WindowManagerService;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v0
 
-    .line 681
+    .line 684
     .local v0, "resolver":Landroid/content/ContentResolver;
     iget-object v1, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->mDisplayInversionEnabledUri:Landroid/net/Uri;
 
     invoke-virtual {v0, v1, v3, p0, v2}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
 
-    .line 683
+    .line 686
     iget-object v1, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->mWindowAnimationScaleUri:Landroid/net/Uri;
 
     invoke-virtual {v0, v1, v3, p0, v2}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
 
-    .line 685
+    .line 688
     iget-object v1, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->mTransitionAnimationScaleUri:Landroid/net/Uri;
 
     invoke-virtual {v0, v1, v3, p0, v2}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
 
-    .line 687
+    .line 690
     iget-object v1, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->mAnimationDurationScaleUri:Landroid/net/Uri;
 
     invoke-virtual {v0, v1, v3, p0, v2}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
 
-    .line 678
+    .line 681
     return-void
 .end method
 
@@ -126,13 +126,13 @@
     .param p2, "uri"    # Landroid/net/Uri;
 
     .prologue
-    .line 693
+    .line 696
     if-nez p2, :cond_3
 
-    .line 694
+    .line 697
     return-void
 
-    .line 697
+    .line 700
     :cond_3
     iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->mDisplayInversionEnabledUri:Landroid/net/Uri;
 
@@ -142,16 +142,16 @@
 
     if-eqz v2, :cond_11
 
-    .line 698
+    .line 701
     iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->this$0:Lcom/android/server/wm/WindowManagerService;
 
     invoke-static {v2}, Lcom/android/server/wm/WindowManagerService;->-wrap10(Lcom/android/server/wm/WindowManagerService;)V
 
-    .line 692
+    .line 695
     :goto_10
     return-void
 
-    .line 702
+    .line 705
     :cond_11
     iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->mWindowAnimationScaleUri:Landroid/net/Uri;
 
@@ -161,10 +161,10 @@
 
     if-eqz v2, :cond_2d
 
-    .line 703
+    .line 706
     const/4 v1, 0x0
 
-    .line 712
+    .line 715
     .local v1, "mode":I
     :goto_1a
     iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->this$0:Lcom/android/server/wm/WindowManagerService;
@@ -179,7 +179,7 @@
 
     move-result-object v0
 
-    .line 713
+    .line 716
     .local v0, "m":Landroid/os/Message;
     iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->this$0:Lcom/android/server/wm/WindowManagerService;
 
@@ -189,7 +189,7 @@
 
     goto :goto_10
 
-    .line 704
+    .line 707
     .end local v0    # "m":Landroid/os/Message;
     .end local v1    # "mode":I
     :cond_2d
@@ -201,13 +201,13 @@
 
     if-eqz v2, :cond_37
 
-    .line 705
+    .line 708
     const/4 v1, 0x1
 
     .restart local v1    # "mode":I
     goto :goto_1a
 
-    .line 706
+    .line 709
     .end local v1    # "mode":I
     :cond_37
     iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$SettingsObserver;->mAnimationDurationScaleUri:Landroid/net/Uri;
@@ -218,13 +218,13 @@
 
     if-eqz v2, :cond_41
 
-    .line 707
+    .line 710
     const/4 v1, 0x2
 
     .restart local v1    # "mode":I
     goto :goto_1a
 
-    .line 710
+    .line 713
     .end local v1    # "mode":I
     :cond_41
     return-void
