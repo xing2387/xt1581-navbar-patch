@@ -16,6 +16,7 @@ zip services.jar -m classes.dex
 
 xt1085 - android6.0
 ```shell
+adb push services.jar /data/local/tmp/
 adb shell
 cd /data/local/tmp
 dex2oat \
