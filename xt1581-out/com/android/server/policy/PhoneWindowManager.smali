@@ -1025,6 +1025,17 @@
     return-void
 .end method
 
+.method static -wrap24(Lcom/android/server/policy/PhoneWindowManager;)V
+    .registers 2
+    
+    const/4 v0, 0x4       # KeyEvent.KEYCODE_BACK
+
+    .prologue
+    invoke-direct {p0, v0}, Lcom/android/server/policy/PhoneWindowManager;->triggerVirtualKeypress(I)V         # inject KeyEvent.KEYCODE_BACK
+
+    return-void
+.end method
+
 .method static -wrap23(Lcom/android/server/policy/PhoneWindowManager;Landroid/view/MotionEvent;)V
     .registers 2
     .param p1, "event"    # Landroid/view/MotionEvent;
@@ -3770,43 +3781,17 @@
     .param p1, "event"    # Landroid/view/MotionEvent;
 
     .prologue
-    const/16 v8, 0xbb
+    const/16 v8, 0xbb     # 187D, KeyEvent.KEYCODE_APP_SWITCH
 
-    const/16 v7, 0x52
+    const/16 v7, 0x52     # 82D, KeyEvent.KEYCODE_MENU
 
-    const/4 v6, 0x4
+    const/4 v6, 0x4       # KeyEvent.KEYCODE_BACK
 
-    const/4 v5, 0x3
-
-    const-string/jumbo v2, "WindowManager"
-
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v4, "handleSwipeNavigation, mNavigationBarOnBottom = "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    iget-boolean v4, p0, Lcom/android/server/policy/PhoneWindowManager;->mNavigationBarOnBottom:Z
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    const/4 v3, 0x1
+    const/4 v5, 0x3       # KeyEvent.KEYCODE_HOME
 
     iget-boolean v2, p0, Lcom/android/server/policy/PhoneWindowManager;->mNavigationBarOnBottom:Z
 
-    if-nez v2, :cond_d2
+    if-nez v2, :cond_d2   # !mNavigationBarOnBottom -> landscape
 
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
@@ -3815,19 +3800,19 @@
     .local v1, "y":F
     iget-object v2, p0, Lcom/android/server/policy/PhoneWindowManager;->mPtScreenSize:Landroid/graphics/Point;
 
-    iget v2, v2, Landroid/graphics/Point;->y:I
+    iget v2, v2, Landroid/graphics/Point;->y:I      # point.y -> v2     (1080)
 
-    div-int/lit8 v2, v2, 0xa
+    div-int/lit8 v2, v2, 0xa       # v2 / 10 -> v2     (108)
 
-    add-int/lit8 v2, v2, 0x50
+    add-int/lit8 v2, v2, 0x50      # v2 + 80 -> v2     (188)
 
-    int-to-float v2, v2
+    int-to-float v2, v2            # v1 is float
 
-    cmpg-float v2, v1, v2
+    cmpg-float v2, v1, v2          # v1 cmp v2 -> v2  ,   v1 is event.getY()
 
-    if-gez v2, :cond_69
+    if-gez v2, :cond_69            # v2 >= 0 ? jump to cond_69,          event.getY() >= 188 , cond_69 == next if
 
-    invoke-direct {p0, v7}, Lcom/android/server/policy/PhoneWindowManager;->triggerVirtualKeypress(I)V
+    invoke-direct {p0, v7}, Lcom/android/server/policy/PhoneWindowManager;->triggerVirtualKeypress(I)V         # inject KeyEvent.KEYCODE_MENU
 
     .end local v1    # "y":F
     :cond_68
@@ -3840,15 +3825,15 @@
 
     iget v2, v2, Landroid/graphics/Point;->y:I
 
-    div-int/lit8 v2, v2, 0x3
+    div-int/lit8 v2, v2, 0x3        # point.y / 3 ,        1080 / 3 = 360
 
     int-to-float v2, v2
 
-    cmpg-float v2, v1, v2
+    cmpg-float v2, v1, v2           # v1 cmp v2 -> v2 ,    v1 is event.getY()
 
-    if-gez v2, :cond_71
+    if-gez v2, :cond_71             # v2 >= 0,        event.getY() > 1080 / 3
 
-    invoke-direct {p0, v8}, Lcom/android/server/policy/PhoneWindowManager;->triggerVirtualKeypress(I)V
+    invoke-direct {p0, v8}, Lcom/android/server/policy/PhoneWindowManager;->triggerVirtualKeypress(I)V          # inject KeyEvent.KEYCODE_APP_SWITCH
 
     goto :goto_69
 
@@ -3857,17 +3842,17 @@
 
     iget v2, v2, Landroid/graphics/Point;->y:I
 
-    mul-int/lit8 v2, v2, 0x3
+    mul-int/lit8 v2, v2, 0x3        # point.y * 3 ,        1080 * 3 = 3240
 
-    div-int/lit8 v2, v2, 0x5
+    div-int/lit8 v2, v2, 0x5        # point.y / 5 ,        1080 * 3 / 5 = 648
 
     int-to-float v2, v2
 
     cmpg-float v2, v1, v2
 
-    if-gez v2, :cond_92
+    if-gez v2, :cond_92             # event.getY() >= point.y * 3 / 5
 
-    invoke-direct {p0, v5}, Lcom/android/server/policy/PhoneWindowManager;->triggerVirtualKeypress(I)V
+    invoke-direct {p0, v5}, Lcom/android/server/policy/PhoneWindowManager;->triggerVirtualKeypress(I)V         # inject KeyEvent.KEYCODE_HOME
 
     goto :goto_69
 
@@ -3880,65 +3865,25 @@
 
     iget v3, v3, Landroid/graphics/Point;->y:I
 
-    div-int/lit8 v3, v3, 0x5
+    div-int/lit8 v3, v3, 0x5        # point.y / 5 -> v3 ,                 1080 / 5 = 216
 
-    sub-int/2addr v2, v3
+    sub-int/2addr v2, v3            # point.y - point.y / 5  -> v2        1080 - 216 = 864
 
     int-to-float v2, v2
 
     cmpg-float v2, v1, v2
 
-    if-gez v2, :cond_68
+    if-gez v2, :cond_68             # event.getY() >= point.y * 4 / 5 ,    cond_68 == goto_69 == return
 
-    invoke-direct {p0, v6}, Lcom/android/server/policy/PhoneWindowManager;->triggerVirtualKeypress(I)V
+    invoke-direct {p0, v6}, Lcom/android/server/policy/PhoneWindowManager;->triggerVirtualKeypress(I)V         # inject KeyEvent.KEYCODE_BACK
 
     goto :goto_69
 
     .end local v1    # "y":F
-    :cond_d2
+    :cond_d2                        # portrait
     iget-boolean v2, p0, Lcom/android/server/policy/PhoneWindowManager;->mNavigationBarOnBottom:Z
 
     if-eqz v2, :cond_68
-
-    const-string/jumbo v2, "WindowManager"
-
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v4, "onSwipeFromBottom x,y = "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
-
-    move-result v4
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    const-string/jumbo v4, ","
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
-
-    move-result v4
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
@@ -7145,14 +7090,12 @@
 
     move-result v4
 
-    if-nez v4, :cond_f1
+    if-nez v4, :cond_f
 
     monitor-exit v5
 
     .line 6464
     return-void
-
-    :cond_f1
 
     .line 6466
     :cond_f

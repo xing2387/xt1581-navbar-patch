@@ -189,37 +189,28 @@
 .end method
 
 .method public onSwipeFromBottom(Landroid/view/MotionEvent;)V
-    .registers 4
+    .registers 7
     .param p1, "event"    # Landroid/view/MotionEvent;
 
     .prologue
     .line 1798
     iget-object v0, p0, Lcom/android/server/policy/PhoneWindowManager$13;->this$0:Lcom/android/server/policy/PhoneWindowManager;
 
-    iget-object v0, v0, Lcom/android/server/policy/PhoneWindowManager;->mNavigationBar:Landroid/view/WindowManagerPolicy$WindowState;
+    iget-boolean v0, v0, Lcom/android/server/policy/PhoneWindowManager;->mNavigationBarOnBottom:Z
 
     if-eqz v0, :cond_15
 
     iget-object v0, p0, Lcom/android/server/policy/PhoneWindowManager$13;->this$0:Lcom/android/server/policy/PhoneWindowManager;
 
-    iget-boolean v0, v0, Lcom/android/server/policy/PhoneWindowManager;->mNavigationBarOnBottom:Z
-
-    if-nez v0, :cond_16
-
-    .line 1797
-    :cond_15
-    if-eqz p1, :cond_17
+    invoke-static {v0, p1}, Lcom/android/server/policy/PhoneWindowManager;->-wrap23(Lcom/android/server/policy/PhoneWindowManager;Landroid/view/MotionEvent;)V
 
     iget-object v0, p0, Lcom/android/server/policy/PhoneWindowManager$13;->this$0:Lcom/android/server/policy/PhoneWindowManager;
 
-    invoke-static {v0, p1}, Lcom/android/server/policy/PhoneWindowManager;->-wrap23(Lcom/android/server/policy/PhoneWindowManager;Landroid/view/MotionEvent;)V
+    iget-object v0, v0, Lcom/android/server/policy/PhoneWindowManager;->mNavigationBar:Landroid/view/WindowManagerPolicy$WindowState;
 
-    :cond_17
-    :goto_15
-    return-void
+    if-eqz v0, :cond_15
 
     .line 1799
-    :cond_16
     iget-object v0, p0, Lcom/android/server/policy/PhoneWindowManager$13;->this$0:Lcom/android/server/policy/PhoneWindowManager;
 
     iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager$13;->this$0:Lcom/android/server/policy/PhoneWindowManager;
@@ -228,7 +219,10 @@
 
     invoke-static {v0, v1, p1}, Lcom/android/server/policy/PhoneWindowManager;->-wrap17(Lcom/android/server/policy/PhoneWindowManager;Landroid/view/WindowManagerPolicy$WindowState;Landroid/view/MotionEvent;)V
 
-    goto :goto_15
+    .line 1797
+    :cond_15
+    return-void
+
 .end method
 
 .method public onSwipeFromRight(Landroid/view/MotionEvent;)V
@@ -239,27 +233,27 @@
     .line 1804
     iget-object v0, p0, Lcom/android/server/policy/PhoneWindowManager$13;->this$0:Lcom/android/server/policy/PhoneWindowManager;
 
-    iget-object v0, v0, Lcom/android/server/policy/PhoneWindowManager;->mNavigationBar:Landroid/view/WindowManagerPolicy$WindowState;
+    iget-boolean v0, v0, Lcom/android/server/policy/PhoneWindowManager;->mNavigationBarOnBottom:Z
 
-    if-eqz v0, :cond_c
+    if-eqz v0, :cond_16
 
     iget-object v0, p0, Lcom/android/server/policy/PhoneWindowManager$13;->this$0:Lcom/android/server/policy/PhoneWindowManager;
 
-    iget-boolean v0, v0, Lcom/android/server/policy/PhoneWindowManager;->mNavigationBarOnBottom:Z
+    invoke-static {v0}, Lcom/android/server/policy/PhoneWindowManager;->-wrap24(Lcom/android/server/policy/PhoneWindowManager;)V
 
-    if-eqz v0, :cond_d
+    goto :goto_c
 
-    .line 1803
-    :cond_c
-    if-eqz p1, :cond_18
+    :cond_16
 
     iget-object v0, p0, Lcom/android/server/policy/PhoneWindowManager$13;->this$0:Lcom/android/server/policy/PhoneWindowManager;
 
     invoke-static {v0, p1}, Lcom/android/server/policy/PhoneWindowManager;->-wrap23(Lcom/android/server/policy/PhoneWindowManager;Landroid/view/MotionEvent;)V
-    
-    :cond_18
-    :goto_c
-    return-void
+
+    iget-object v0, p0, Lcom/android/server/policy/PhoneWindowManager$13;->this$0:Lcom/android/server/policy/PhoneWindowManager;
+
+    iget-object v0, v0, Lcom/android/server/policy/PhoneWindowManager;->mNavigationBar:Landroid/view/WindowManagerPolicy$WindowState;
+
+    if-eqz v0, :cond_18
 
     .line 1805
     :cond_d
@@ -271,7 +265,10 @@
 
     invoke-static {v0, v1, p1}, Lcom/android/server/policy/PhoneWindowManager;->-wrap17(Lcom/android/server/policy/PhoneWindowManager;Landroid/view/WindowManagerPolicy$WindowState;Landroid/view/MotionEvent;)V
 
-    goto :goto_c
+    :cond_18
+    :goto_c
+    return-void
+
 .end method
 
 .method public onSwipeFromTop(Landroid/view/MotionEvent;)V
